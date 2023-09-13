@@ -7,14 +7,14 @@ function NombreJugador ({onComenzar}) {
     const Comenzar = () => {
         if (nombre !== "") {
             onComenzar(nombre);
-            console.log(nombre);
         }
-        else {alert("Nombre Invalido");}
+        else {alert("Nombre Inválido");}
     }
 
 
     return (
     <div>
+        <p>Ingresa el nombre del jugador</p>
      <input onChange={(e) => setNombre(e.target.value)} type="text" value={nombre} ></input>
      <button onClick={Comenzar}>Comenzar</button>
     </div>
