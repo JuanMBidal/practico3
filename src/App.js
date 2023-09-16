@@ -7,6 +7,7 @@ function App() {
 
   const [nombre, setNombre] = useState("")
 
+  //Recibe el nombre desde NombreJugador.
   const CambiarNombre = (nombre) => {
     setNombre(nombre);
   }
@@ -14,13 +15,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
           {nombre==="" ? (
             <NombreJugador onComenzar={CambiarNombre} />
             ):(
               <Juego nombre={nombre} />
             )}
-      </header>
     </div>
   );
 }

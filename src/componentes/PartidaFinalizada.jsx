@@ -1,22 +1,24 @@
+import StyledPartidaFinalizada from "../styledComponents/StyledPartidaFinalizada";
+
 function PartidaFinalizada (prop) {
 
-    const ganaUsuario = prop.puntosUsuario > 3 ;
+    const ganaUsuario = (prop.puntosUsuario === 3);
 
     if  (ganaUsuario) {
         return (
-            <div>
-              <h2>Partida finalizada</h2>
+            <StyledPartidaFinalizada>
+              <h2>PARTIDA FINALIZADA</h2>
               <p>Ganaste! </p>
               <button onClick={prop.reiniciarJuego}>Volver a jugar</button>
-            </div>
+            </StyledPartidaFinalizada>
         )
     } else {
         return (
-            <div>
-              <h2>Partida finalizada</h2>
+            <StyledPartidaFinalizada>
+              <h2>PARTIDA FINALIZADA</h2>
               <p>Perdiste :( </p>
-            <button onClick={prop.reiniciarJuego}>Volver a jugar</button>
-            </div>
+              <button onClick={prop.reiniciarJuego}>Volver a jugar</button>
+            </StyledPartidaFinalizada>
         )
     }
 }
