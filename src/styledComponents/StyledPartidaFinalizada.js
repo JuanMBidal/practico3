@@ -8,7 +8,7 @@ const StyledPartidaFinalizada = styled.div`
   justify-content: space-evenly;
   top: 50%;
   left: 50%;
-  height: 45vh;
+  height: 50vh;
   width: 45vh;
   transform: translate(-50%, -50%);
   background-color: rgba(212, 187, 127, 0.5);
@@ -32,10 +32,15 @@ const StyledPartidaFinalizada = styled.div`
 
   button {
     width: 25vh;
-    height: 7vh;
+    height: 10vh;
     background-color: crimson;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 3vh;
+  }
+
+  button:hover {
+    box-shadow: 5px, 10px, black;
   }
 `;
 

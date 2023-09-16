@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Práctico N3: Piedra, Papel o Tijera con REACT.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Creación de componentes básicos.
 
-## Available Scripts
+### Los subcomponentes se encuentran dentro de la carpeta **componentes**.
 
-In the project directory, you can run:
+```
+└── componentes
+    ├── Juego.jsx
+    ├── NombreJugador.jsx
+    ├── PartidaFinalizada.jsx
+    └── Resultado.jsx
+```
 
-### `npm start`
+## Obtención del nombre del jugador.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**NombreJugador** Captura el nombre ingresado en el input y lo envía al componente App usando la función *onComenzar* que se pasa como prop de NombreJugador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Selección de la opción del jugador y del oponente.
 
-### `npm test`
+**Juego** Contiene las opciones para obtener las jugadas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+if (!partidaFinalizada) {
+      const randomIndex = Math.floor(Math.random() * 3);
+      const jugadaComputadora = elecciones[randomIndex];
 
-### `npm run build`
+      setJugadaUsuario(eleccion);
+      setJugadaComputadora(jugadaComputadora);
+```
+Captura las jugadas del usuario y de la computadora.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Determinación del ganador y actualización del marcador.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+En **Juego**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+if (eleccion === jugadaComputadora) setResultado("Empataste");
+      else if (
+        (eleccion === "piedra" && jugadaComputadora === "tijeras") ||
+        (eleccion === "papel" && jugadaComputadora === "piedra") ||
+        (eleccion === "tijeras" && jugadaComputadora === "papel")
+      ) {
+        setResultado("Ganaste");
+        setPuntosUsuario(puntosUsuario + 1);
+      } else { 
+        setResultado("Perdiste");
+        setPuntosComputadora(puntosComputadora + 1);
+      }
+```
+Determina el ganador de la jugada y suma puntos.
 
-### `npm run eject`
+La información se pasa como props a  **Resultado**, donde se muestra en la pantalla.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Control del juego y finalización.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+useEffect(() =>{
+    if ((puntosUsuario === 3) || (puntosComputadora === 3)) {
+      setPartidaFinalizada(true);
+    }
+  }, [puntosUsuario, puntosComputadora]);
+```
+Usé el hook Effect para terminar el juego cuando alguien llegue a tres puntos.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Anunciar al ganador y reiniciar el juego.
+**PartidaFinalizada** Se renderiza cuando la partida termina. Muestra el resultado de la partida y un botón para inciar una nueva.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Estilos CSS con Styled Components.
+En la carpeta **styledComponents** se encuentran todos los archivos para dar el css a los componentes usando la librería *styled-components*.

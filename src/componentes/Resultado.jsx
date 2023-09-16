@@ -32,7 +32,7 @@ function Resultado (prop) {
 
     return (
      <StyledResultado>
-        {!sinEmpezar && (<h2>{prop.resultado} la ronda!</h2>)}
+        {!sinEmpezar && (<h2 className='resultadoRonda'>{prop.resultado} la ronda!</h2>)}
         <div className='puntos'>
           <div className='puntosUsuario'>
             <p>{prop.nombre}</p>

@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const StyledNombreJugador = styled.div`
     color: blanchedalmond;
-    height: 100vh;
-    width: 100vw;
+    
+
+    font-size: 3vh;
 
     input {
         background-color: grey;
         height: 5vh;
-        width: 15vw;
+        width: 25vh;
         margin-bottom: 3vh;
         text-align: center;
         font-size: 4vh;
@@ -20,6 +21,11 @@ const StyledNombreJugador = styled.div`
     background-color: crimson;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 3vh;
+  }
+
+  h3 {
+    text-decoration: underline;
   }
 `;
 

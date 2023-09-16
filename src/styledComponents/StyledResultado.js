@@ -47,6 +47,10 @@ const StyledResultado = styled.div`
         padding-bottom: 5vh;
     }
 
+    .resultadoRonda {
+        font-size: 4vh;
+    }
+
     //Animacion
 
     .bounce {
